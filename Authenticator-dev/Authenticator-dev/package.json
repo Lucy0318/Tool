@@ -1,0 +1,40 @@
+{
+  "name": "authenticator-extension",
+  "version": "0.1.0",
+  "description": "Authenticator generates 2-Step Verification codes in your browser.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "gts check",
+    "clean": "gts clean",
+    "packageEdge": "cmd /C \"\"C:\\Program Files (x86)\\Windows Kits\\10\\App Certification Kit\\makeappx.exe\" pack /h SHA256 /d edge /p edge/Authenticator.appx\"",
+    "installEdge": "rm -rf edge && npm run edge && powershell -Command \"Add-AppxPackage -Path edge\\AppxManifest.xml -Register\"",
+    "compile": "gts clean && tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check",
+    "chrome": "bash scripts/build.sh chrome",
+    "firefox": "bash scripts/build.sh firefox",
+    "edge": "bash scripts/build.sh edge"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Authenticator-Extension/Authenticator.git"
+  },
+  "author": "Authenticator Extension",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Authenticator-Extension/Authenticator/issues"
+  },
+  "homepage": "https://github.com/Authenticator-Extension/Authenticator#readme",
+  "devDependencies": {
+    "@types/chrome": "^0.0.59",
+    "@types/crypto-js": "^3.1.38",
+    "@types/jssha": "0.0.29",
+    "fs-extra": "^5.0.0",
+    "gts": "^0.8.0",
+    "sass": "^1.16.1",
+    "typescript": "^2.6.1"
+  },
+  "dependencies": {}
+}
